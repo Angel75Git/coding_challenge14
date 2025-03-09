@@ -17,9 +17,16 @@ function newTicket(name, issue, Plevel) {
     const customerIssue = document.createElement("p");
     customerIssue.textContent = issue;
 
-    //Priority Level
+    //Priority Level + Categorizing level and adding class
     const customerLevel = document.createElement("label")
     customerLevel.textContent = Plevel;
+    if (Plevel === "High") {
+        ticket.classList.add("High");
+    }    else if(Plevel === "Medium"){
+            ticket.classList.add("Medium");
+    }    else if(Plevel == "Low"){
+            ticket.classList.add("Low");
+    }
 
     //Appending all Attributes to ticket
     ticket.appendChild(customerName);
@@ -33,7 +40,7 @@ function newTicket(name, issue, Plevel) {
     //setting button attributes
     resolveBtn.setAttribute("class", "Remove-button")
     resolveBtn.setAttribute("id", "Remove-ticket")
-    
+
     ticket.appendChild(resolveBtn)
     //Connecting the ticket to dashboard
     dashBoard.appendChild(ticket)
@@ -41,5 +48,7 @@ function newTicket(name, issue, Plevel) {
 
 //New entries - support Tickets
 newTicket("Paul", "Too long wait times", "High")
-newTicket("Zack", "Too short wait times", "Low")
+newTicket("Zack", "Too short wait times", "Medium")
+
+//Task 3
 
