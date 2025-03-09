@@ -41,6 +41,13 @@ function newTicket(name, issue, Plevel) {
     resolveBtn.setAttribute("class", "Remove-button")
     resolveBtn.setAttribute("id", "Remove-ticket")
 
+    //Part of Task 4 - Having the Resolve button remove the ticket
+    resolveBtn.addEventListener("click", function(event){
+        ticket.remove() 
+        event.stopPropagation() //In order that the log doesn't appear
+    })
+
+
     ticket.appendChild(resolveBtn)
     //Connecting the ticket to dashboard
     dashBoard.appendChild(ticket)
@@ -63,4 +70,10 @@ highArray.forEach(ticket => {
     ticket.style.backgroundColor = "red"
     ticket.style.border = "2px solid black"
 })
-console.log(highArray);
+
+//Task 4
+// Simply logging each time user clicks the ticket container
+document.getElementById("ticketContainer").addEventListener("click", function(){
+    console.log("The ticketContainer has been Clicked!");
+    
+})
