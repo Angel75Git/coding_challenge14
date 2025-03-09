@@ -48,7 +48,19 @@ function newTicket(name, issue, Plevel) {
 
 //New entries - support Tickets
 newTicket("Paul", "Too long wait times", "High")
-newTicket("Zack", "Too short wait times", "Medium")
+newTicket("Zack", "Too short wait times", "Low")
+newTicket("Betty", "Not enough lighting", "Medium")
+newTicket("Anna", "Lost my purse", "High")
 
 //Task 3
+//Collecting ALL High Class tickets
+nodeList = document.querySelectorAll(".High")
 
+//Converting NodeList to array
+const highArray = Array.from(nodeList)
+//Highlighting the Background to red
+highArray.forEach(ticket => {
+    ticket.style.backgroundColor = "red"
+    ticket.style.border = "2px solid black"
+})
+console.log(highArray);
