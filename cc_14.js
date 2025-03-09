@@ -47,10 +47,61 @@ function newTicket(name, issue, Plevel) {
         event.stopPropagation() //In order that the log doesn't appear
     })
 
-
     ticket.appendChild(resolveBtn)
     //Connecting the ticket to dashboard
     dashBoard.appendChild(ticket)
+
+
+    //Task 5
+    ticket.addEventListener("dblclick", function(){
+        editTickets();//Calling edit function
+    })
+//Populating the inputs with current information
+
+function editTickets(){
+    //Making textbox for editing with name pre-populated
+    const inputName = document.createElement("input");
+    inputName.value = customerName.textContent;
+    ticket.appendChild(inputName)
+
+    //Making input textbox with issue loaded
+    const inputIssue = document.createElement("input");
+    inputIssue.value = customerIssue.textContent;
+    ticket.appendChild(inputIssue);
+
+    //Making input textbox with priority level pre-populated
+    const inputLevel = document.createElement("input");
+    inputLevel.value = customerLevel.textContent;
+    ticket.appendChild(inputLevel);
+//Save button
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Submit Changes"
+    ticket.appendChild(saveBtn)
+
+    //Function for save button
+    saveBtn.addEventListener("click", function(){
+        customerName.textContent = inputName.value;
+        customerIssue.textContent = inputIssue.value;
+        customerLevel.textContent = inputLevel.value;
+
+        //Reflecting changes done to editing
+        if (inputLevel.value === "High") {
+            ticket.classList.remove("Medium")
+            ticket.classList.remove("low")
+            ticket.classList.add("High");
+        }   else if(inputLevel.value === "Medium"){
+                ticket.classList.remove("High")
+                ticket.classList.remove("Low")
+                ticket.classList.add("Medium");
+        }   else if(inputLevel.value == "Low"){
+                ticket.classList.remove("High")
+                ticket.classList.remove("Medium")
+                ticket.classList.add("Low");
+    }})
+    };
+
+    
+
 }
 
 //New entries - support Tickets
@@ -77,3 +128,4 @@ document.getElementById("ticketContainer").addEventListener("click", function(){
     console.log("The ticketContainer has been Clicked!");
     
 })
+
