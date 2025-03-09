@@ -84,19 +84,19 @@ function editTickets(){
         customerIssue.textContent = inputIssue.value;
         customerLevel.textContent = inputLevel.value;
 
+        //Removing Previous classes
+        ticket.classList.remove("High", "Medium", "low")
+
         //Reflecting changes done to editing
         if (inputLevel.value === "High") {
-            ticket.classList.remove("Medium")
-            ticket.classList.remove("low")
             ticket.classList.add("High");
+            ticket.style.backgroundColor = "red"
         }   else if(inputLevel.value === "Medium"){
-                ticket.classList.remove("High")
-                ticket.classList.remove("Low")
                 ticket.classList.add("Medium");
+                ticket.style.backgroundColor = "Orange"
         }   else if(inputLevel.value == "Low"){
-                ticket.classList.remove("High")
-                ticket.classList.remove("Medium")
                 ticket.classList.add("Low");
+                ticket.style.backgroundColor = "Green"
     }})
     };
 
